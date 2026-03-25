@@ -12,6 +12,7 @@ urlpatterns = [
     path('api/orders/',   include('orders.urls',   namespace='orders')),
     path('api/offers/',   include('offers.urls',   namespace='offers')),
     path('api/payments/', include('payments.urls', namespace='payments')),
+    path('api/contact/', include('contact.urls', namespace='contact')),
 ]
 
 if settings.DEBUG:

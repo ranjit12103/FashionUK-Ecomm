@@ -4,17 +4,17 @@ import { useAuth } from '../context/AuthContext'
 import { useCart } from '../context/CartContext'
 
 const navLinks = [
-  { label: 'Sale', href: '/shop?filter=sale', highlight: true },
-  { label: 'New In', href: '/shop?filter=new' },
-  { label: 'Clothing', href: '/shop' },
+  { label: 'Sale',         href: '/shop?filter=sale', highlight: true },
+  { label: 'New In',       href: '/shop?filter=new' },
+  { label: 'Clothing',     href: '/shop' },
   { label: 'Best Sellers', href: '/shop?filter=bestseller' },
-  { label: 'Brands', href: '/shop' },
+  { label: 'Contact',      href: '/contact' },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
+  const [scrolled, setScrolled]       = useState(false)
+  const [mobileOpen, setMobileOpen]   = useState(false)
+  const [searchOpen, setSearchOpen]   = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [userMenuOpen, setUserMenuOpen] = useState(false)
 
@@ -149,8 +149,9 @@ export default function Navbar() {
                   <div className="py-1">
                     {[
                       { label: 'My Profile', href: '/profile' },
-                      { label: 'My Orders', href: '/orders' },
-                      { label: 'Wishlist', href: '/wishlist' },
+                      { label: 'My Orders',  href: '/orders' },
+                      { label: 'Wishlist',   href: '/wishlist' },
+                      { label: 'Contact Us', href: '/contact' },
                     ].map((item) => (
                       <Link key={item.label} to={item.href} onClick={() => setUserMenuOpen(false)}
                         className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-black transition-colors">
@@ -182,13 +183,14 @@ export default function Navbar() {
             <div className="border-t border-gray-100 pt-3 mt-3">
               {isLoggedIn ? (
                 <>
-                  <Link to="/profile" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg">My Profile</Link>
-                  <Link to="/orders" onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg">My Orders</Link>
+                  <Link to="/profile"  onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg">My Profile</Link>
+                  <Link to="/orders"   onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg">My Orders</Link>
+                  <Link to="/contact"  onClick={() => setMobileOpen(false)} className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg">Contact Us</Link>
                   <button onClick={handleLogout} className="block w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg mt-1">Logout</button>
                 </>
               ) : (
                 <div className="flex gap-3 px-3">
-                  <Link to="/login" onClick={() => setMobileOpen(false)} className="flex-1 text-center py-2.5 text-sm font-bold border-2 border-black text-black rounded-xl hover:bg-black hover:text-white transition-colors">Login</Link>
+                  <Link to="/login"    onClick={() => setMobileOpen(false)} className="flex-1 text-center py-2.5 text-sm font-bold border-2 border-black text-black rounded-xl hover:bg-black hover:text-white transition-colors">Login</Link>
                   <Link to="/register" onClick={() => setMobileOpen(false)} className="flex-1 text-center py-2.5 text-sm font-bold bg-black text-white rounded-xl hover:bg-gray-800 transition-colors">Register</Link>
                 </div>
               )}

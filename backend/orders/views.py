@@ -25,6 +25,7 @@ class ShippingAddressListCreateView(generics.ListCreateAPIView):
         serializer.save(user=self.request.user)
 
 
+
 class ShippingAddressDetailView(generics.RetrieveUpdateDestroyAPIView):
     """GET / PATCH / DELETE /api/orders/addresses/<pk>/"""
     serializer_class   = ShippingAddressSerializer

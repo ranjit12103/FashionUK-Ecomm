@@ -3,22 +3,22 @@ import { Link } from 'react-router-dom'
 
 const footerLinks = {
   Company: [
-    { label: 'About Us', href: '#' },
-    { label: 'Careers', href: '#' },
-    { label: 'Press', href: '#' },
+    { label: 'About Us',      href: '#' },
+    { label: 'Careers',       href: '#' },
+    { label: 'Press',         href: '#' },
     { label: 'Sustainability', href: '#' },
   ],
   Help: [
-    { label: 'FAQ', href: '#' },
+    { label: 'FAQ',          href: '#' },
     { label: 'Shipping Info', href: '#' },
-    { label: 'Returns', href: '#' },
-    { label: 'Size Guide', href: '#' },
-    { label: 'Contact Us', href: '#' },
+    { label: 'Returns',      href: '#' },
+    { label: 'Size Guide',   href: '#' },
+    { label: 'Contact Us',   href: '/contact' },   // ← updated to real route
   ],
   Shop: [
-    { label: 'New In', href: '/shop?filter=new' },
+    { label: 'New In',       href: '/shop?filter=new' },
     { label: 'Best Sellers', href: '/shop?filter=bestseller' },
-    { label: 'Sale', href: '/shop?filter=sale' },
+    { label: 'Sale',         href: '/shop?filter=sale' },
     { label: 'All Products', href: '/shop' },
   ],
 }
@@ -26,7 +26,7 @@ const footerLinks = {
 const categories = ['Shirts', 'T-Shirts', 'Trousers', 'Jackets', 'Hoodies', 'Jeans']
 
 export default function Footer() {
-  const [email, setEmail] = useState('')
+  const [email, setEmail]           = useState('')
   const [subscribed, setSubscribed] = useState(false)
 
   return (

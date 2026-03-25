@@ -17,7 +17,8 @@ import RegisterPage from './pages/RegisterPage'
 import NotFoundPage from './pages/NotFoundPage'
 import PaymentSuccessPage from './pages/PaymentSuccessPage'
 import PaymentFailedPage from './pages/PaymentFailedPage'
-import OrderDetailPage from './pages/ProductDetailPage'
+import OrderDetailPage from './pages/OrderDetailPage'   // ← fixed: was importing ProductDetailPage
+import ContactPage from './pages/ContactPage'
 
 function Layout({ children }) {
   return (
@@ -35,24 +36,33 @@ export default function App() {
       <AuthProvider>
         <CartProvider>
           <Routes>
-            {/* Public routes with layout */}
-            <Route path="/" element={<Layout><HomePage /></Layout>} />
-            <Route path="/shop" element={<Layout><ShopPage /></Layout>} />
-            <Route path="/product/:slug" element={<Layout><ProductDetailPage /></Layout>} />
+            {/* Public routes */}
+            <Route path="/"               element={<Layout><HomePage /></Layout>} />
+            <Route path="/shop"           element={<Layout><ShopPage /></Layout>} />
+            <Route path="/product/:slug"  element={<Layout><ProductDetailPage /></Layout>} />
+            <Route path="/contact"        element={<Layout><ContactPage /></Layout>} />
 
             {/* Auth routes — no navbar/footer */}
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/login"    element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
 
             {/* Protected routes */}
-            <Route path="/cart" element={<Layout><ProtectedRoute><CartPage /></ProtectedRoute></Layout>} />
+            <Route path="/cart"     element={<Layout><ProtectedRoute><CartPage /></ProtectedRoute></Layout>} />
             <Route path="/wishlist" element={<Layout><ProtectedRoute><WishlistPage /></ProtectedRoute></Layout>} />
-            <Route path="/payment" element={<Layout><ProtectedRoute><PaymentPage /></ProtectedRoute></Layout>} />
-            <Route path="/profile" element={<Layout><ProtectedRoute><ProfilePage /></ProtectedRoute></Layout>} />
-            <Route path="/orders" element={<Layout><ProtectedRoute><ProfilePage /></ProtectedRoute></Layout>} />
-            <Route path="/orders/:orderNumber" element={<Layout><ProtectedRoute><OrderDetailPage /></ProtectedRoute></Layout>} />
-            <Route path="/payment/success" element={<Layout><ProtectedRoute><PaymentSuccessPage /></ProtectedRoute></Layout>} />
-            <Route path="/payment/failed" element={<Layout><ProtectedRoute><PaymentFailedPage /></ProtectedRoute></Layout>} />
+            <Route path="/payment"  element={<Layout><ProtectedRoute><PaymentPage /></ProtectedRoute></Layout>} />
+            <Route path="/profile"  element={<Layout><ProtectedRoute><ProfilePage /></ProtectedRoute></Layout>} />
+            <Route path="/orders"   element={<Layout><ProtectedRoute><ProfilePage /></ProtectedRoute></Layout>} />
+
+            {/* Order detail — dedicated page */}
+            <Route path="/orders/:orderNumber"
+              element={<Layout><ProtectedRoute><OrderDetailPage /></ProtectedRoute></Layout>} />
+
+            {/* Payment results */}
+            <Route path="/payment/success"
+              element={<Layout><ProtectedRoute><PaymentSuccessPage /></ProtectedRoute></Layout>} />
+            <Route path="/payment/failed"
+              element={<Layout><ProtectedRoute><PaymentFailedPage /></ProtectedRoute></Layout>} />
+
             {/* 404 */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

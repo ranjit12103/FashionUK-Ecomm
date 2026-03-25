@@ -10,4 +10,5 @@ urlpatterns = [
     path('addresses/<int:pk>/',            views.ShippingAddressDetailView.as_view(),   name='address-detail'),
     path('<str:order_number>/',            views.OrderDetailView.as_view(),             name='order-detail'),
     path('<str:order_number>/cancel/',     views.OrderCancelView.as_view(),             name='order-cancel'),
+    path('<str:order_number>/',            views.OrderDetailView.as_view(),             name='order-detail'),
 ]
